@@ -1,1 +1,84 @@
-MY PORTO
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malton Black</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="font-[Rubik]">
+    <main class="lg:mx-9">
+        <header class="flex justify-center items-center py-6 lg:justify-start lg:items-start">
+            <div class="profile flex justify-center items-center flex-col lg:flex-row gap-3">
+                <div class="logo rounded-full"><img src="assets\Profile.png" alt="" width="67" class="rounded-full">
+                </div>
+                <div class="userName flex flex-col justify-center items-center lg:justify-start lg:items-start">
+                    <div class="name" class="text-center">
+                        <p class="font-bold text-2xl">Malton Black</p>
+                    </div>
+                    <div class="status" class="text-center">
+                        <p class="text-lg">Illustrator</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="content px-4">
+            <div id="gallery" class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-4 space-y-4">
+                <!-- Images Auto Load Here -->
+            </div>
+        </div>
+        <div id="link-order" class="absolute hidden justify-center items-center w-full h-full bg-black/20 top-0">
+            <div class="flex bg-black rounded-xl w-3/4 py-7 items-center justify-center text-white flex-col px-3 gap-5">
+                <div class="flex flex-col gap-2 w-full">
+                    <a href="" class="bg-white/15 rounded-md py-2 px-3 w-full">Fiverr</a>
+                    <a href="" class="bg-white/15 rounded-md py-2 px-3 w-full">Artistree</a>
+                    <a href="" class="bg-white/15 rounded-md py-2 px-3 w-full">WhatsApp</a>
+                </div>
+                <div id="closeOrder" class="flex justify-center items-center w-full"><button
+                        class="bg-white text-black py-3 w-full rounded-md">Close</button></div>
+            </div>
+        </div>
+        <footer class="fixed bottom-0 w-full bg-white py-3 px-3">
+            <div class="flex justify-center items-center"><button
+                    class="bg-black text-white w-full py-3 rounded-lg cursor-pointer hover:bg-black/90">Order Now</button></div>
+        </footer>
+
+    </main>
+    <script>
+        const gallery = document.getElementById("gallery");
+        const folderPath = "assets/My Portfolio/";
+
+        fetch("data/images.json")
+            .then(res => res.json())
+            .then(images => {
+
+                // 🔥 Urutkan terbaru dulu (kalau belum dari server)
+                images.sort((a, b) => b.modified - a.modified);
+
+                images.forEach(item => {
+
+                    const imgDiv = document.createElement("div");
+                    imgDiv.className =
+                        "relative break-inside-avoid rounded-xl overflow-hidden transition duration-300 bg-gray-200 cursor-pointer";
+
+                    const img = document.createElement("img");
+                    img.src = folderPath + encodeURI(item.name);
+                    img.className = "w-full rounded-xl";
+                    img.loading = "lazy";
+
+                    const overlay = document.createElement("div");
+                    overlay.className =
+                        "absolute inset-0 bg-gradient-to-b from-black/50 to-transparent opacity-0 hover:opacity-50 transition duration-300";
+
+
+                    imgDiv.appendChild(img);
+                    imgDiv.appendChild(overlay);
+                    gallery.appendChild(imgDiv);
+                });
+            });
+    </script>
+</body>
+
+</html>
