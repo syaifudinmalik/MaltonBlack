@@ -50,8 +50,12 @@
 
             <!-- Tombol Close -->
             <button id="closeViewer"
-                class="absolute top-5 right-5 text-white text-3xl font-bold bg-white/20 px-4 py-2 rounded-lg hover:bg-white/40">
+                class="hidden lg:block absolute top-5 right-5 text-white text-3xl font-bold bg-white/20 px-4 py-2 rounded-lg hover:bg-white/40">
                 ✕
+            </button>
+            <button id="closeViewerMobile"
+                class="absolute bottom-1/4 text-white text-lg font-bold bg-white/20 px-4 py-2 rounded-lg hover:bg-white/40 w-3/4 text-center">
+                Close
             </button>
 
             <!-- Wrapper (background untuk gambar transparan) -->
@@ -69,6 +73,7 @@
         const viewer = document.getElementById("imageViewer");
         const viewerImg = document.getElementById("viewerImg");
         const closeViewer = document.getElementById("closeViewer");
+        const closeViewerMobile = document.getElementById("closeViewerMobile");
 
         fetch("data/images.json")
             .then(res => res.json())
@@ -106,6 +111,11 @@
             });
         // 🔥 CLOSE BUTTON
         closeViewer.addEventListener("click", () => {
+            viewer.classList.add("hidden");
+            viewer.classList.remove("flex");
+            viewerImg.src = "";
+        });
+        closeViewerMobile.addEventListener("click", () => {
             viewer.classList.add("hidden");
             viewer.classList.remove("flex");
             viewerImg.src = "";
