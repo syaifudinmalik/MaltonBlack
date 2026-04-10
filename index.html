@@ -66,6 +66,7 @@
                     const img = document.createElement("img");
                     img.src = folderPath + encodeURI(item.name);
                     img.className = "w-full rounded-xl";
+                    img.loading = "lazy";
 
                     const overlay = document.createElement("div");
                     overlay.className =
