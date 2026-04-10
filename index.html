@@ -40,11 +40,35 @@
                         class="bg-white text-black py-3 w-full rounded-md">Close</button></div>
             </div>
         </div>
+        <!-- <footer class="fixed bottom-0 w-full bg-white py-3 px-3">
+            <div class="flex justify-center items-center"><button
+                    class="bg-black text-white w-full py-3 rounded-lg cursor-pointer hover:bg-black/90">Order Now</button></div>
+        </footer> -->
+        <!-- Image Viewer -->
+        <!-- Image Viewer -->
+        <div id="imageViewer" class="fixed inset-0 bg-black/90 hidden justify-center items-center z-50">
+
+            <!-- Tombol Close -->
+            <button id="closeViewer"
+                class="absolute top-5 right-5 text-white text-3xl font-bold bg-white/20 px-4 py-2 rounded-lg hover:bg-white/40">
+                ✕
+            </button>
+
+            <!-- Wrapper (background untuk gambar transparan) -->
+            <div class="bg-gray-200 p-1 rounded-xl flex items-center justify-center">
+                <img id="viewerImg" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg">
+            </div>
+
+        </div>
 
     </main>
     <script>
         const gallery = document.getElementById("gallery");
-        const folderPath = "assets/My Portfolio/";
+        const folderPath = "assets/My Portfolio 2/";
+
+        const viewer = document.getElementById("imageViewer");
+        const viewerImg = document.getElementById("viewerImg");
+        const closeViewer = document.getElementById("closeViewer");
 
         fetch("data/images.json")
             .then(res => res.json())
@@ -68,14 +92,34 @@
                     overlay.className =
                         "absolute inset-0 bg-gradient-to-b from-black/50 to-transparent opacity-0 hover:opacity-50 transition duration-300";
 
+                    // 🔥 EVENT CLICK → buka viewer
+                    imgDiv.addEventListener("click", () => {
+                        viewer.classList.remove("hidden");
+                        viewer.classList.add("flex");
+                        viewerImg.src = img.src;
+                    });
 
                     imgDiv.appendChild(img);
                     imgDiv.appendChild(overlay);
                     gallery.appendChild(imgDiv);
                 });
             });
+        // 🔥 CLOSE BUTTON
+        closeViewer.addEventListener("click", () => {
+            viewer.classList.add("hidden");
+            viewer.classList.remove("flex");
+            viewerImg.src = "";
+        });
+
+        // 🔥 CLOSE kalau klik background
+        viewer.addEventListener("click", (e) => {
+            if (e.target === viewer) {
+                viewer.classList.add("hidden");
+                viewer.classList.remove("flex");
+                viewerImg.src = "";
+            }
+        });
     </script>
 </body>
-
 
 </html>
