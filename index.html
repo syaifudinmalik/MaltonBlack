@@ -6,22 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malton Black</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css'>
 </head>
 
 <body class="font-[Rubik]">
     <main class="lg:mx-9">
-        <header class="flex justify-center items-center py-6 lg:justify-start lg:items-start">
-            <div class="profile flex justify-center items-center flex-col lg:flex-row gap-3">
+        <header class="flex justify-center items-center py-6 px-6 lg:justify-start lg:items-start">
+            <div class="profile flex justify-center items-center flex-col lg:flex-row gap-3 lg:w-full">
                 <div class="logo rounded-full"><img src="assets\Profile.png" alt="" width="67" class="rounded-full">
                 </div>
-                <div class="userName flex flex-col justify-center items-center lg:justify-start lg:items-start">
-                    <div class="name" class="text-center">
-                        <p class="font-bold text-2xl">Malton Black</p>
+                <div class="flex items-center w-full justify-between">
+                    <div class="userName flex flex-col justify-center items-center lg:justify-start lg:items-start">
+                        <div class="name" class="text-center">
+                            <p class="font-bold text-2xl">Malton Black</p>
+                        </div>
+                        <div class="status" class="text-center">
+                            <p class="text-lg">Illustrator</p>
+                        </div>
+                        <div
+                            class="social-media gap-5 flex justify-center items-center text-xl font-extrabold mt-2 lg:hidden">
+                            <a href="https://www.instagram.com/MaltonBlack">
+                                <i class="fi fi-brands-instagram "></i>
+                            </a>
+                            <a href="https://wa.me/6282335195843">
+                                <i class="fi fi-brands-whatsapp"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@maltonblack">
+                                <i class="fi fi-brands-tik-tok"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="status" class="text-center">
-                        <p class="text-lg">Illustrator</p>
+                    <div
+                        class="social-media gap-5 lg:flex justify-center items-center text-2xl font-extrabold mt-2 hidden">
+                        <a href="https://www.instagram.com/MaltonBlack">
+                            <i class="fi fi-brands-instagram "></i>
+                        </a>
+                        <a href="https://wa.me/6282335195843">
+                            <i class="fi fi-brands-whatsapp"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@maltonblack">
+                            <i class="fi fi-brands-tik-tok"></i>
+                        </a>
                     </div>
                 </div>
+
             </div>
         </header>
         <div class="content px-4">
@@ -29,23 +57,7 @@
                 <!-- Images Auto Load Here -->
             </div>
         </div>
-        <div id="link-order" class="absolute hidden justify-center items-center w-full h-full bg-black/20 top-0">
-            <div class="flex bg-black rounded-xl w-3/4 py-7 items-center justify-center text-white flex-col px-3 gap-5">
-                <div class="flex flex-col gap-2 w-full">
-                    <a href="" class="bg-white/15 rounded-md py-2 px-3 w-full">Fiverr</a>
-                    <a href="" class="bg-white/15 rounded-md py-2 px-3 w-full">Artistree</a>
-                    <a href="" class="bg-white/15 rounded-md py-2 px-3 w-full">WhatsApp</a>
-                </div>
-                <div id="closeOrder" class="flex justify-center items-center w-full"><button
-                        class="bg-white text-black py-3 w-full rounded-md">Close</button></div>
-            </div>
-        </div>
-        <!-- <footer class="fixed bottom-0 w-full bg-white py-3 px-3">
-            <div class="flex justify-center items-center"><button
-                    class="bg-black text-white w-full py-3 rounded-lg cursor-pointer hover:bg-black/90">Order Now</button></div>
-        </footer> -->
-        <!-- Image Viewer -->
-        <!-- Image Viewer -->
+
         <div id="imageViewer" class="fixed inset-0 bg-black/90 hidden justify-center items-center z-50">
 
             <!-- Tombol Close -->
@@ -54,7 +66,7 @@
                 ✕
             </button>
             <button id="closeViewerMobile"
-                class="absolute bottom-1/4 lg:hidden text-white text-lg font-bold bg-white/20 px-4 py-2 rounded-lg hover:bg-white/40 w-3/4 text-center">
+                class="absolute bottom-36 lg:hidden text-white text-lg font-bold bg-white/20 px-4 py-2 rounded-lg hover:bg-white/40 w-3/4 text-center">
                 Close
             </button>
 
@@ -68,7 +80,7 @@
     </main>
     <script>
         const gallery = document.getElementById("gallery");
-        const folderPath = "assets/My Portfolio/";
+        const folderPath = "assets/My Portfolio 2/";
 
         const viewer = document.getElementById("imageViewer");
         const viewerImg = document.getElementById("viewerImg");
@@ -129,6 +141,7 @@
                 viewerImg.src = "";
             }
         });
+        document.addEventListener("contextmenu", e => e.preventDefault());
     </script>
 </body>
 
